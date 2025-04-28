@@ -111,14 +111,13 @@ async function callComfy(prompt) {
   const jsonReponse = await response1.json();
   console.log("reponse : " + JSON.stringify(jsonReponse));
 
-  const request2 = new Request("http://127.0.0.1:8188//history/"+, {
-    method: "POST",
-    body: finalPrompt,
+  const request2 = new Request("http://127.0.0.1:8188/history/"+jsonReponse.prompt_id, {
+    method: "GET",
   });
   
-  const response1 = await fetch(request);
-  const jsonReponse = await response1.json();
-  console.log("reponse : " + JSON.stringify(jsonReponse));
+  const response2 = await fetch(request2);
+  const jsonReponse2 = await response2.json();
+  console.log("reponse : " + JSON.stringify(jsonReponse2));
 }
 
 function decodePrompt(prompt) {
