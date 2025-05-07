@@ -1,7 +1,7 @@
 import ollama from 'ollama'
 import {generateRandomLetters} from "./generateur.js";
 import fs from 'node:fs';
-const randomLetters = generateRandomLetters();
+import { json } from 'node:stream/consumers';
 // const response = await ollama.chat({
 //   model: 'cas/ministral-8b-instruct-2410_q4km',
 //   messages: [{ role: 'user', content: "Voici les notes obtenus par mes étudiants : alice : 18 ; mathieu : 8 ; Gregoire : 12 ; Natasha : 10 ; Henry : 16 ; Classe les dans l'ordre croissant de leurs notes et calcule la moyenne de la classe"
@@ -23,6 +23,7 @@ const randomLetters = generateRandomLetters();
 // })
 
 let apiCall;
+const comfyAdress = "http://0.0.0.0:8188";
 fs.readFile('./flux_dev_checkpoint.json', 'utf8', (err, data) => {
   if (err) {
     console.error(err);
@@ -32,43 +33,74 @@ fs.readFile('./flux_dev_checkpoint.json', 'utf8', (err, data) => {
   //console.log(data);
 });
 
-let reponseCorrecte = false;
-let listeMots;
-while (!reponseCorrecte) {
-  const response = await ollama.chat({
-    model: 'nchapman/mistral-small-instruct-2409-abliterated',
-    messages: [{ role: 'user', content: "Here is a list of letters, find some words in english language that only use letters from this list :" + randomLetters 
-      + "give me your answer following this json template : { answer: string, words: [word1: string, word2: string]}"
-       }],
-  });
-  
-  console.log(response.message.content);
-  
-  listeMots = decoderListeMots(response.message.content);
-  //console.log("listeMots : " + JSON.stringify(listeMots));
+const imageData = {};
+imageData.randomLetters = generateRandomLetters();
 
-  if (listeMots !== undefined) {
-    reponseCorrecte = true;
-  }  
+imageData.listeMots = await genereMots(imageData.randomLetters);
+
+imageData.phrase = await generePhrase(imageData.listeMots);
+
+imageData.prompt = await genererPrompt(imageData.phrase);
+
+imageData.promptId = await callComfy(imageData.prompt);
+
+//await callComfyWebSocket(imageData.promptId);
+
+await attenteFinGeneration();
+
+await recupererImageHistorique(imageData);
+
+await writeFile(imageData);
+
+
+async function genererPrompt(phrase) {
+  const prompt = await ollama.chat({
+    model: 'nchapman/mistral-small-instruct-2409-abliterated',
+    messages: [{
+      role: 'user', content: "Here is a sentence, please, make an optimized prompt for an image generation ai out of it" + phrase
+    }],
+  });
+
+  console.log(prompt.message.content);
+  return prompt.message.content;
 }
 
-const phrase = await ollama.chat({
-  model: 'nchapman/mistral-small-instruct-2409-abliterated',
-  messages: [{ role: 'user', content: "Here is a list of word, please make a coherent sentence with it " + JSON.stringify(listeMots)
-     }],
-});
+async function generePhrase(listeMots) {
+  const phrase = await ollama.chat({
+    model: 'nchapman/mistral-small-instruct-2409-abliterated',
+    messages: [{
+      role: 'user', content: "Here is a list of word, please make a coherent sentence with it " + JSON.stringify(listeMots)
+    }],
+  });
 
-console.log(phrase.message.content);
+  console.log(phrase.message.content);
+  return phrase.message.content;
+}
 
-const prompt = await ollama.chat({
-  model: 'nchapman/mistral-small-instruct-2409-abliterated',
-  messages: [{ role: 'user', content: "Here is a sentence, please, make an optimized prompt for an image generation ai out of it" + phrase.message.content
-     }],
-});
+async function genereMots(randomLetters) {
+  let reponseCorrecte = false;
+  let listeMots;
+  console.log("prompt generation mots : " + "Here is a list of letters, find some words in english language that only use letters from this list :" + randomLetters
+          + "give me your answer as a json /no_think");
+  while (!reponseCorrecte) {
+    const response = await ollama.chat({
+      model: 'qwen3:30b-a3b',
+      messages: [{
+        role: 'user', content: "Here is a list of letters, find some words in english language that only use letters from this list :" + randomLetters
+          + "give me your answer as a json /no_think"
+      }],
+    });
 
-console.log(prompt.message.content);
+    console.log(response.message.content);
 
-await callComfy(prompt.message.content);
+    listeMots = decoderListeMots(response.message.content);
+    //console.log("listeMots : " + JSON.stringify(listeMots));
+    if (listeMots !== undefined) {
+      reponseCorrecte = true;
+    }
+  }
+  return listeMots;
+}
 
 function decoderListeMots(reponse) {
 
@@ -78,6 +110,8 @@ function decoderListeMots(reponse) {
   //console.log("rawListeMots : " + rawListeMots);
   try {
     rawListeMots = rawListeMots.replaceAll('json', '');
+    rawListeMots = rawListeMots.replaceAll('<think>', '');
+    rawListeMots = rawListeMots.replaceAll('</think>', '');
   } catch (error) {
     
   }
@@ -94,6 +128,31 @@ function decoderListeMots(reponse) {
   
 }
 
+async function callComfyWebSocket(promptId) {
+  const server_address = "127.0.0.1:8188"
+  //const client_id = str(uuid.uuid4())
+  const socket = new WebSocket("ws://127.0.0.1:8188/ws?clientId=0");
+
+  // Executes when the connection is successfully established.
+  socket.addEventListener('open', event => {
+    console.log('WebSocket connection established!');
+    // Sends a message to the WebSocket server.
+    //socket.send('http://127.0.0.1:8188/history');
+    let generationPasFinie = true;
+    while (generationPasFinie){
+      out = socket.recv();
+      if (out){
+        console.log("out socket : " + out);
+        const message = JSON.parse(out);
+        if (message['type'] === 'executing' && message['data']['prompt_id']){
+          console.log("prompt id recut : " + message['data']['prompt_id'] + "prompt id envoyé : " + promptId);
+        }
+      }
+    }
+  
+  });
+}
+
 async function callComfy(prompt) {
   prompt = decodePrompt(prompt);
   apiCall["6"]["inputs"]["text"] = prompt;
@@ -102,22 +161,70 @@ async function callComfy(prompt) {
 
 
   //console.log("definitive prompt : " + finalPrompt);
-  const request = new Request("http://127.0.0.1:8188/prompt", {
+  const request = new Request(comfyAdress + "/prompt", {
     method: "POST",
     body: finalPrompt,
   });
   
   const response1 = await fetch(request);
   const jsonReponse = await response1.json();
+  const promptId = jsonReponse.prompt_id;
   console.log("reponse : " + JSON.stringify(jsonReponse));
 
-  const request2 = new Request("http://127.0.0.1:8188/history/"+jsonReponse.prompt_id, {
+
+  const requestPrompts = new Request(comfyAdress + "/prompt", {
     method: "GET",
   });
   
-  const response2 = await fetch(request2);
-  const jsonReponse2 = await response2.json();
-  console.log("reponse : " + JSON.stringify(jsonReponse2));
+  const responsePrompts = await fetch(requestPrompts);
+  const jsonReponsePrompts = await responsePrompts.json();
+  console.log("reponse prompts : " + JSON.stringify(jsonReponsePrompts));
+
+  return promptId;
+
+}
+
+async function attenteFinGeneration(){
+  let generationTerminee = false;
+  while (!generationTerminee) {
+    await sleep(50000);
+
+      const requestPrompts = new Request(comfyAdress + "/prompt", {
+        method: "GET",
+      });
+      
+      const responsePrompts = await fetch(requestPrompts);
+      const jsonReponsePrompts = await responsePrompts.json();
+      console.log("reponse prompts : " + JSON.stringify(jsonReponsePrompts));
+
+      if (jsonReponsePrompts.exec_info.queue_remaining == 0) {
+        generationTerminee = true;
+      }
+  }
+
+
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function recupererImageHistorique(imageData) {
+  const requestHistory = new Request(comfyAdress + "/history", {
+    method: "GET",
+  });
+
+  const responseHistory = await fetch(requestHistory);
+  const jsonReponseHistory = await responseHistory.json();
+  //imageData.imageName = jsonReponseHistory.imageData.promptId
+  console.log("reponse history : " + JSON.stringify(jsonReponseHistory));
+  for (const property in jsonReponseHistory) {
+    if (property === imageData.promptId){
+      console.log("prompt : " + jsonReponseHistory[property]["prompt"][2]["6"]["inputs"]["text"]);
+      imageData.imageName = jsonReponseHistory[property]["outputs"]["9"]["images"][0].filename;
+      console.log("filename : " + imageData.imageName);
+    }
+  }
 }
 
 function decodePrompt(prompt) {
@@ -129,3 +236,12 @@ function decodePrompt(prompt) {
   console.log("prompt decodé : " + prompt);
   return prompt;
 }
+
+function writeFile(imageData) {
+  fs.writeFile('./outputs/'+ imageData.imageName.replaceAll("_.png","") + ".txt", JSON.stringify(imageData), err => {
+    if (err) {
+      console.error(err);
+    } else {
+      // file written successfully
+    }
+  });}

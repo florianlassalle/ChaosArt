@@ -31,6 +31,35 @@ const frequencies = {
     'Z': 7
 };
 
+const frequenciesEnglish = {
+    'A': 820,
+    'B': 150,
+    'C': 280,
+    'D': 430,
+    'E': 1270,
+    'F': 220,
+    'G': 200,
+    'H': 610,
+    'I': 700,
+    'J': 15,
+    'K': 77,
+    'L': 400,
+    'M': 240,
+    'N': 670,
+    'O': 750,
+    'P': 190,
+    'Q': 9,
+    'R': 600,
+    'S': 630,
+    'T': 910,
+    'U': 280,
+    'V': 98,
+    'W': 240,
+    'X': 15,
+    'Y': 200,
+    'Z': 7
+};
+
 export const generateRandomLetters = function(){
     const aleatoire = [];
 
