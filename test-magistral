@@ -1,0 +1,8 @@
+Salut, j'aimerais que tu me créer un projet angular 18 en utilisant ce template html.
+
+sur la page d'acceuil le titre sera "Bonjour  je m'appelle Florian", tu écrira ensuite un court texte expliquant que je suis un artiste indépendant qui aime créer des oeuvres lumineuses en utilisantla linogravure.
+en dessous il faudrait remplir la section "Erat lacinia" que tu va renomer "mes engagements qualités" et ou tu détaillera la qualité de mes produits, a savoir du papier de haute qualité, des encres ultra fines, des impressions uniques faitesà la main, et une numérotation unique de chaque oeuvre.
+En dessous, la section "Ipsum sed dolor" tu vas la renomer "Portfolio" et tu va y présenter mes oeuvres à savoir, "la méduse", une oeuvre d'un bleu profond où le regard se perd dans les méandres des tentacules. "La Place de la bourse" qui représente une vue d'artiste de la célebre place de Bordeaux, cette oeuvre retranscrit la richesse architecturale de la ville. et enfin "la porte Cailhau", cette oeuvre retranscrit la majestée et la grandeur de la ville de bordeaux.
+Au clic sur chaque oeuvre, une nouvelle page s'ouvre présentant l'oeuvre plus en détail, avec son prix, elles sont toutes à 20€, ses dimensions, elles sont toutes au format A5.
+Noublie pas de diviser le projet en plusieurs components angular afin de rendre le texte plus facile à maintenir. Tu devra également t'assurer de respecter les standards Angular.
+Les données propres à chaque oeuvre seront stockées dans un fichier json et récupérées dynamiquement dans le code.
