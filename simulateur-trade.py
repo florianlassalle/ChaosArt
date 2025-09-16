@@ -1,6 +1,8 @@
 
 import csv
 import random
+import numpy as np
+import matplotlib.pyplot as plt
 
 def randomOrientation():
     isPositive = random.choice(true, false)
@@ -76,18 +78,38 @@ def simulerInvestissement(historiqueValeurs):
     print("portefeuille final : ", portefeuille)
     print("variation finale : ", variationFinale , "%")
     print("resultat hold : ", ((portefeuilleHold - valeurInitiale) / valeurInitiale) * 100 , "%")
-    return plusValueFinale
+    objetRetour = {"plusValueFinale": plusValueFinale, "nombreReponse": len(listeReponses), "totalBonnesReponses": totaBonnesRep}
+    return objetRetour
 
 listeValeur = readFile()
 plusValues = []
+rendements = []
+listeNombreReponses = []
+listeNbrBonnesRep = []
+listeRatioBonneRep = []
 nombreEchantillons = 1000
 
 for i in range(nombreEchantillons):
-    plusValues.append(simulerInvestissement(listeValeur))
+    objetSimulateur = simulerInvestissement(listeValeur)
+    plusValues.append(objetSimulateur["plusValueFinale"])
+    rendements.append(objetSimulateur["plusValueFinale"]/10000 * 100)
+    listeNombreReponses.append(objetSimulateur["nombreReponse"])
+    listeNbrBonnesRep.append(objetSimulateur["totalBonnesReponses"])
+    listeRatioBonneRep.append(objetSimulateur["totalBonnesReponses"] / objetSimulateur["nombreReponse"])
 
 totalPlusValues = 0
 for i in range(len(plusValues)):
     totalPlusValues += plusValues[i]
 
+pourcentRendement = totalPlusValues/nombreEchantillons / 10000 * 100
 print("moyenne des plus values = " , totalPlusValues/nombreEchantillons)
-print("moyenne des rendements = " , totalPlusValues/nombreEchantillons / 10000 * 100 , "%")
+print("moyenne des rendements = " , pourcentRendement , "%")
+print("moyenne bonnes reponses : ", np.mean(listeRatioBonneRep))
+
+#calculate deciles of data
+deciles = np.percentile(rendements, np.arange(0, 100, 10))
+print("deciles : " , deciles)
+amplitude = (-30, 30)
+n, bins, patches = plt.hist(rendements)
+plt.grid(True)
+plt.show()
