@@ -33,25 +33,30 @@ fs.readFile('./flux_dev_checkpoint.json', 'utf8', (err, data) => {
   //console.log(data);
 });
 
-const imageData = {};
-imageData.randomLetters = generateRandomLetters();
+for (let index = 0; index < 10; index++) {
+  
+  console.log("tour n " + index);
+  const imageData = {};
+  imageData.randomLetters = generateRandomLetters();
 
-imageData.listeMots = await genereMots(imageData.randomLetters);
+  imageData.listeMots = await genereMots(imageData.randomLetters);
 
-imageData.phrase = await generePhrase(imageData.listeMots);
+  imageData.phrase = await generePhrase(imageData.listeMots);
 
-imageData.prompt = await genererPrompt(imageData.phrase);
+  imageData.prompt = await genererPrompt(imageData.phrase);
 
-imageData.promptId = await callComfy(imageData.prompt);
+  imageData.promptId = await callComfy(imageData.prompt);
 
-//await callComfyWebSocket(imageData.promptId);
+  //await callComfyWebSocket(imageData.promptId);
 
-await attenteFinGeneration();
+  await attenteFinGeneration();
 
-await recupererImageHistorique(imageData);
+  await recupererImageHistorique(imageData);
 
-await writeFile(imageData);
+  await writeFile(imageData);
 
+  await callComfySmallerModel();
+}
 
 async function genererPrompt(phrase) {
   const prompt = await ollama.chat({
@@ -59,6 +64,7 @@ async function genererPrompt(phrase) {
     messages: [{
       role: 'user', content: "Here is a sentence, please, make an optimized prompt for an image generation ai out of it" + phrase
     }],
+    keep_alive: "300ms"
   });
 
   console.log(prompt.message.content);
@@ -80,20 +86,23 @@ async function generePhrase(listeMots) {
 async function genereMots(randomLetters) {
   let reponseCorrecte = false;
   let listeMots;
-  console.log("prompt generation mots : " + "Here is a list of letters, find some words in english language that only use letters from this list :" + randomLetters
-          + "give me your answer as a json /no_think");
   while (!reponseCorrecte) {
-    const response = await ollama.chat({
-      model: 'qwen3:30b-a3b',
-      messages: [{
-        role: 'user', content: "Here is a list of letters, find some words in english language that only use letters from this list :" + randomLetters
-          + "give me your answer as a json /no_think"
-      }],
-    });
+    try {
+      const response = await ollama.chat({
+        model: 'qwen3:30b-a3b',
+        messages: [{
+          role: 'user', content: "Here is a list of letters, find 10 to 15 differents words in english language that only use letters from this list :" + randomLetters
+            + "give me your answer as a json /no_think"
+        }],
+      });
+  
+      console.log(response.message.content);
+      listeMots = decoderListeMots(response.message.content);
 
-    console.log(response.message.content);
+    } catch (error) {
+      console.log("erreur lors de la generation des mots");
+    }
 
-    listeMots = decoderListeMots(response.message.content);
     //console.log("listeMots : " + JSON.stringify(listeMots));
     if (listeMots !== undefined) {
       reponseCorrecte = true;
@@ -102,6 +111,9 @@ async function genereMots(randomLetters) {
   return listeMots;
 }
 
+async function unloadLLM() {
+  
+}
 function decoderListeMots(reponse) {
 
   let rawListeMots = reponse.split("```");
@@ -217,7 +229,7 @@ async function recupererImageHistorique(imageData) {
   const responseHistory = await fetch(requestHistory);
   const jsonReponseHistory = await responseHistory.json();
   //imageData.imageName = jsonReponseHistory.imageData.promptId
-  console.log("reponse history : " + JSON.stringify(jsonReponseHistory));
+  //console.log("reponse history : " + JSON.stringify(jsonReponseHistory));
   for (const property in jsonReponseHistory) {
     if (property === imageData.promptId){
       console.log("prompt : " + jsonReponseHistory[property]["prompt"][2]["6"]["inputs"]["text"]);
@@ -227,10 +239,61 @@ async function recupererImageHistorique(imageData) {
   }
 }
 
+/**
+ * Appel à comfy avec un petit modèle pour liberer de la ram et pouvoir charger le llm texte
+ * @param {*}  
+ * @returns 
+ */
+async function callComfySmallerModel() {
+  await sleep(20000);
+
+  let prunedPrompt = JSON.parse(fs.readFileSync('./simple-pruned.json', 'utf8'));
+    
+  
+  prunedPrompt = "{\"prompt\": " + JSON.stringify(prunedPrompt) + "}";
+  console.log("prune prompt : " + prunedPrompt);
+  const request = new Request(comfyAdress + "/prompt", {
+    method: "POST",
+    body: prunedPrompt,
+  });
+  
+  const responsepruned = await fetch(request);
+  const promptId = null;
+  try {
+    const jsonReponse = await responsepruned.json();
+    promptId = jsonReponse.prompt_id;
+
+  } catch (error) {
+    console.log("error : pruned response : " + JSON.stringify(responsepruned));
+  }
+  //console.log("promptIdPruned : " + JSON.stringify(jsonReponse));
+
+  // attente que le modèle soit chargé
+  await sleep(20000);
+
+  const requestDelete = new Request(comfyAdress + "/queue/" + promptId, {
+    method: "DELETE",
+  });
+  
+  const responseDelete = await fetch(requestDelete);
+  try {
+    const jsonresponseDelete = await responseDelete.json();
+    console.log("reponse delete : " + JSON.stringify(jsonresponseDelete));
+  
+  } catch (error) {
+    console.log("error delete : " + JSON.stringify(responseDelete));
+  }
+
+  return promptId;
+
+}
+
+
 function decodePrompt(prompt) {
   prompt = prompt.replaceAll("\"", "");
-  let promptSplited = prompt.split("**Prompt:**");
-  promptSplited.length > 1 ? prompt = promptSplited[1] : null;
+  let promptSplited = prompt.split("**");
+  console.log("prompt splited : " + JSON.stringify(promptSplited));
+  promptSplited.length > 1 ? prompt = promptSplited[2] : promptSplited[0];
   prompt = prompt.replaceAll("\n", "");
 
   console.log("prompt decodé : " + prompt);
