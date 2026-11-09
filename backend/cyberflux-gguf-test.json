@@ -1,0 +1,148 @@
+{
+  "48": {
+    "inputs": {
+      "unet_name": "CyberRealistic_Flux_V2.5-q4_1.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF)",
+      "cnr_id": "ComfyUI-GGUF",
+      "ver": "6ea2651e7df66d7585f6ffee804b20e92fb38b8a"
+    }
+  },
+  "50": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoaderGGUF",
+    "_meta": {
+      "title": "DualCLIPLoader (GGUF)",
+      "cnr_id": "ComfyUI-GGUF",
+      "ver": "6ea2651e7df66d7585f6ffee804b20e92fb38b8a"
+    }
+  },
+  "54": {
+    "inputs": {
+      "seed": 107914723048096,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "48",
+        0
+      ],
+      "positive": [
+        "64",
+        0
+      ],
+      "negative": [
+        "58",
+        0
+      ],
+      "latent_image": [
+        "65",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler",
+      "cnr_id": "comfy-core",
+      "ver": "0.13.0"
+    }
+  },
+  "56": {
+    "inputs": {
+      "images": [
+        "63",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Aperçu Image",
+      "cnr_id": "comfy-core",
+      "ver": "0.13.0"
+    }
+  },
+  "57": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Charger VAE",
+      "cnr_id": "comfy-core",
+      "ver": "0.13.0"
+    }
+  },
+  "58": {
+    "inputs": {
+      "clip_l": "",
+      "t5xxl": "child, teen, young-looking, school uniform, real person likeness, celebrity, brand logo, team logo, game interface, readable text, watermark, deformed anatomy, extra limbs, extra fingers, deformed hands, plastic skin, oversmoothed skin",
+      "guidance": 3,
+      "clip": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux",
+      "cnr_id": "comfy-core",
+      "ver": "0.13.0"
+    }
+  },
+  "63": {
+    "inputs": {
+      "samples": [
+        "54",
+        0
+      ],
+      "vae": [
+        "57",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode",
+      "cnr_id": "comfy-core",
+      "ver": "0.13.0"
+    }
+  },
+  "64": {
+    "inputs": {
+      "clip_l": "",
+      "t5xxl": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build with defined shoulders and toned stomach, small fine-line rose tattoo on inner left forearm, clearly an adult woman, completely nude, artistic nude photography, pubic hairs, lavender pubic hairs, landing strip pubic hairs, attic bedroom with exposed wooden beams, warm gold glow from the monitors with no readable text, pink and lavender LED strip lights, white sheets, soft intimate lighting, tasteful and elegant, 85mm lens f/1.8, light film grain, natural skin texture, photorealistic, vertical 4:5, standing against the wooden beam, one arm resting overhead, silhouette lit by pink and lavender LEDs from behind, hair loose, calm sensual mood, full shot",
+      "guidance": 3,
+      "clip": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux",
+      "cnr_id": "comfy-core",
+      "ver": "0.13.0"
+    }
+  },
+  "65": {
+    "inputs": {
+      "width": 720,
+      "height": 720,
+      "batch_size": 2
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Image Latente Vide",
+      "cnr_id": "comfy-core",
+      "ver": "0.13.0"
+    }
+  }
+}
