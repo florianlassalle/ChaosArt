@@ -10,7 +10,7 @@ const emilyAppartment = "";
 const date = new Date().toDateString();
 let apiCall;
 const comfyAdress = "http://127.0.0.1:8188";
-fs.readFile('./flux_dev_checkpoint.json', 'utf8', (err, data) => {
+fs.readFile('./flux_klein.json', 'utf8', (err, data) => {
   if (err) {
     console.error(err);
     return;
@@ -22,7 +22,7 @@ fs.readFile('./flux_dev_checkpoint.json', 'utf8', (err, data) => {
 await emilyGrwm();
 //await emilyFullDay();
 async function emilyGrwm(){
-  for (let index = 0; index < 3; index++) {
+  for (let index = 0; index < 10; index++) {
     const imageGRWMData = {};
     imageGRWMData.name = "Emily_grwm";
     imageGRWMData.date = date;
@@ -34,7 +34,7 @@ async function emilyGrwm(){
     imageGRWMData.prompt = null;
     while (imageGRWMData.prompt == null) {
       imageGRWMData.prompt = await genererGenericPrompt("Create a prompt for an image generation AI for a get ready with me style photo, for today: " + imageGRWMData.date + ". Only describe her tenue. Her tenue should be in the style " + imageGRWMData.style + ". She is slighly sexy, the tenue should be original, the kind that make people look at her. Not an average woman. Only describe her tenue, not the environement. Describe her tenue with facts and not subjective views. the description should be precise and not let places for interpretation.");
-      //console.log("prompt brut GRWM: " + imageGRWMData.prompt);
+      console.log("prompt brut GRWM: " + imageGRWMData.prompt);
 
     }
     imageGRWMData.description = null;
@@ -264,13 +264,21 @@ async function emilyFullDay(){
   }
   }
 async function genererGenericPrompt(input) {
-  const prompt = await ollama.generate({
+  console.log("génération du prompt ...");
+  var prompt = "";
+  try {
+    prompt = await ollama.generate({
     model: 'gemma4:e4b',
     prompt: input,
     format: "json",
     stream: false,
     think: false,
   });
+
+  } catch (error) {
+    console.log("erreur génération du prompt : " + error);
+    return null;
+  }
 
   
   let reponse;
@@ -306,7 +314,7 @@ async function genererGenericPrompt(input) {
 
 async function genererDescription(input) {
   const prompt = await ollama.generate({
-    model: 'magistral',
+    model: 'gemma4:e4b',
     prompt: input,
     format: "json",
     stream: false,
@@ -428,16 +436,16 @@ async function unloadOllama(){
 }
 
 function completePrompt(prompt) {
-  const descriptionPersonne = "Generate a photo of a blonde woman [Billie Eilish:Emma Watson:0.5] "
-  const descriptionLieux = "standing in the entrance of a modern appartment, there are modern and colorfull art on the wall. She is taking herself in photo in the miror "
-  const descriptionPose = "The lighting is natural but dramatic, highlighting the details of the outfit. The pose is confident and dynamic. "
+  const descriptionPersonne = "Generate a photo of a beautifull blonde woman [Margot Robbie:Emma Watson:0.5] "
+  const descriptionLieux = "standing in the entrance of a modern appartment, there are modern and colorfull art on the wall."
+  const descriptionPose = "The lighting is natural, highlighting the details of the outfit. The pose is confident and dynamic. "
   return descriptionPersonne + prompt + descriptionLieux + descriptionPose;
 }
 
 async function callComfy(imageData) {
-  apiCall["6"]["inputs"]["text"] = imageData.prompt;
-  apiCall["27"]["inputs"]["batch_size"] = 1;
-  apiCall["27"]["inputs"]["width"] = 720;
+  apiCall["75:74"]["inputs"]["text"] = imageData.prompt;
+  apiCall["75:66"]["inputs"]["batch_size"] = 1;
+  //apiCall["27"]["inputs"]["width"] = 720;
   apiCall["9"]["inputs"]["filename_prefix"] = "emily/" + imageData.name;
   const finalPrompt = "{\"prompt\": " + JSON.stringify(apiCall) + "}";
 
@@ -523,8 +531,8 @@ async function recupererImageHistorique(imageData) {
   //console.log("reponse history : " + JSON.stringify(jsonReponseHistory));
   for (const property in jsonReponseHistory) {
     if (property === imageData.promptId){
-      console.log("prompt : " + jsonReponseHistory[property]["prompt"][2]["6"]["inputs"]["text"]);
       try {
+        console.log("prompt : " + jsonReponseHistory[property]["prompt"][2]["75:74"]["inputs"]["text"]);
         imageData.imageName = jsonReponseHistory[property]["outputs"]["9"]["images"][0].filename;
       } catch (error) {
         console.log("erreur lecture historique Comfy : " + JSON.stringify(jsonReponseHistory));
