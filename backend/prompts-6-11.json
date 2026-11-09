@@ -1,0 +1,406 @@
+{
+  "persona": "Rosemily",
+  "persona_file": "persona.yaml",
+  "reference_date": "2026-11-06",
+  "platform": "fanvue",
+  "rating": "nsfw_allowed",
+  "common": {
+    "lora_trigger": "rsmly, [Margot Robbie:Emma Watson:0.5]",
+    "base_prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm",
+    "adult_positive": "adult woman, clearly 26 years old, mature features",
+    "style_suffix": "photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+    "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo"
+  },
+  "daily_gallery": {
+    "publish_time": "23:00",
+    "paywall_after_order": 4,
+    "images": [
+      {
+        "id": "FV-01",
+        "order": 1,
+        "intensity": 1,
+        "time": "07:15",
+        "theme": "gym",
+        "set": "gym",
+        "outfit": "black sports bra and leggings",
+        "pose": "standing at the squat rack facing the mirror, one hand on the bar, confident smirk",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, industrial weight room, cold light, squat rack, dumbbells, black sports bra and leggings, standing at the squat rack, mirror reflection, confident smirk, full-body shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Morning session. Cardio first, tilt later.",
+        "locked": false,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "FV-02",
+        "order": 2,
+        "intensity": 2,
+        "time": "08:00",
+        "theme": "gym",
+        "set": "gym",
+        "outfit": "sports bra, open zip jacket slipping off shoulders",
+        "pose": "sitting on a bench, towel around neck, out of breath",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, sitting on a gym bench after workout, black sports bra, open zip jacket slipping off shoulders, towel around neck, slightly glistening skin, cold gym light, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Done. Legs are gone. Hoodie on, brain off.",
+        "locked": false,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "FV-03",
+        "order": 3,
+        "intensity": 3,
+        "time": "13:00",
+        "theme": "original_fantasy_outfit",
+        "set": "cosplay_workshop",
+        "outfit": "original huntress outfit, leather straps and foam armor plates, daring neckline",
+        "pose": "leaning on the workbench, holding a handmade foam spear, low-angle shot",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, original fantasy huntress outfit, leather straps and foam armor plates, daring neckline, handmade foam spear, cosplay workshop corner with EVA foam, glue gun and wigs on stands, leaning on the workbench, confident low-angle shot, warm workshop light, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Finished the huntress build. Foam, glue, patience. Mostly glue.",
+        "locked": false,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "FV-04",
+        "order": 3,
+        "intensity": 3,
+        "time": "16:30",
+        "theme": "gamer_life",
+        "set": "bedroom_setup",
+        "outfit": "thin white tank top, high-waisted jeans unbuttoned",
+        "pose": "backlit at the attic window, one arm raised to the exposed beam",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, attic apartment window backlight, exposed beams, thin white tank top, high-waisted jeans unbuttoned, arm raised to the beam, soft golden afternoon light, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Attic light does most of the work. I just stand here.",
+        "locked": false,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "FV-05",
+        "order": 4,
+        "intensity": 4,
+        "time": "21:00",
+        "theme": "after_ranked",
+        "set": "bedroom_setup",
+        "outfit": "oversized lavender hoodie sliding off one shoulder, bare legs",
+        "pose": "sitting in the gaming chair, one leg folded, high ponytail, headset on",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, high ponytail, white gaming headset with small rose sticker, oversized lavender hoodie sliding off one shoulder, bare legs, gaming chair, attic room with two monitors, pink and lavender LED glow, intense focused look, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Queue popped. Ponytail up. Everyone's in danger, including me.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "FV-06",
+        "order": 5,
+        "intensity": 5,
+        "time": "23:45",
+        "theme": "after_ranked",
+        "set": "bedroom_setup",
+        "outfit": "only an oversized lavender hoodie, implied nude, arms crossed over chest",
+        "pose": "standing back to the desk, headset around neck, pouting",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, wearing only an oversized lavender hoodie, arms crossed covering chest, headset around neck, pouting expression, dim attic room with monitor glow and pink lavender LED, implied nude, tasteful framing, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Lost again. Consolation prize incoming.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "FV-07",
+        "order": 6,
+        "intensity": 6,
+        "time": "00:45",
+        "theme": "late_night",
+        "set": "bedroom_setup",
+        "outfit": "pink satin pyjama shirt wide open, topless, satin shorts",
+        "pose": "sitting on the edge of the bed, one hand holding the fabric, direct gaze",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, pink satin pyjama shirt wide open, topless artistic nude, satin shorts, sitting on the edge of a bed, soft warm lamp light, direct gaze, tasteful framing, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Screen off. Door locked. Just you and me.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "FV-08A",
+        "order": 7,
+        "intensity": 7,
+        "time": "03:00",
+        "theme": "late_night",
+        "set": "bedroom_setup",
+        "outfit": "nude, pink satin pyjamas on the floor",
+        "pose": "lying on the bed seen from behind, head turned toward the camera",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, full artistic nude seen from behind, lying on a bed, white sheets, pink satin pyjamas on the floor, head turned toward the camera, croissant on the bedside table, warm lamp light, soft shadows, tasteful composition, fine art nude photography style, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "3am. Croissant. No regrets.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "FV-08B",
+        "order": 8,
+        "intensity": 7,
+        "time": "03:00",
+        "theme": "late_night",
+        "set": "bedroom_setup",
+        "outfit": "nude, pink satin pyjamas on the floor",
+        "pose": "lying on the bed facing the camera, one leg bent, one arm raised above the head",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, full artistic nude lying on a bed facing the camera, natural pose, one leg bent, arm raised above the head, white sheets, pink satin pyjamas on the floor, croissant on the bedside table, warm lamp light, soft shadows, tasteful composition, fine art nude photography style, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "3am. Croissant. No regrets.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      }
+    ]
+  },
+  "weekly_ppv": {
+    "day": "friday",
+    "count": 10,
+    "images": [
+      {
+        "id": "PPV-01",
+        "order": 1,
+        "intensity": 1,
+        "time": null,
+        "theme": "gym",
+        "set": "gym",
+        "outfit": "black sports bra and leggings",
+        "pose": "stretching on a mat, glancing at the camera",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, industrial weight room, cold light, black sports bra and leggings, stretching on a yoga mat, looking at the camera over her shoulder, full-body shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Friday leg day. Stretching is the easy part.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-02",
+        "order": 2,
+        "intensity": 2,
+        "time": null,
+        "theme": "original_fantasy_outfit",
+        "set": "cosplay_workshop",
+        "outfit": "original battle mage outfit, deep-slit robe, no champion references",
+        "pose": "standing with a handmade glowing staff, wind in the robe",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, original battle mage outfit, dark deep-slit robe with gold trim, handmade staff with a glowing crystal, cosplay workshop corner with wigs on stands, low-angle hero shot, dramatic rim light, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Battle mage mode. Spells not included.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-03",
+        "order": 3,
+        "intensity": 3,
+        "time": null,
+        "theme": "rank_up_celebration",
+        "set": "bedroom_setup",
+        "outfit": "generic esports jersey (no logo), bare legs",
+        "pose": "arms raised in celebration, confetti, headset on",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, generic esports jersey without any logo, oversized, bare legs, arms raised in celebration, confetti in the air, white gaming headset with small rose sticker, attic gaming room with pink and lavender LED, happy open-mouth laugh, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "I said this was the season. Fine, a promo game. Let me celebrate.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-04",
+        "order": 4,
+        "intensity": 4,
+        "time": null,
+        "theme": "gym",
+        "set": "gym",
+        "outfit": "sports top pulled up, leggings",
+        "pose": "sitting on the bench, wiping her face with the hem of her top",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, sitting on a gym bench, black sports top pulled up wiping face, leggings, towel on the bench, cold gym light, slightly glistening skin, medium shot, tasteful framing, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Post-workout. No notes.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-05",
+        "order": 5,
+        "intensity": 5,
+        "time": null,
+        "theme": "original_fantasy_outfit",
+        "set": "cosplay_workshop",
+        "outfit": "original spider queen outfit, black corset with web pattern, strappy",
+        "pose": "seated on a throne made of foam, one leg crossed, handmade prop daggers",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, original spider queen outfit, black corset with web pattern, strappy details, fishnet gloves, seated on a handmade foam throne, handmade prop daggers, cosplay workshop corner with wigs on stands, dramatic purple light, sultry look, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "The spider queen build took three weekends. Worth it.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-06",
+        "order": 6,
+        "intensity": 5,
+        "time": null,
+        "theme": "after_ranked",
+        "set": "bedroom_setup",
+        "outfit": "only an oversized lavender hoodie, bare legs",
+        "pose": "lying on the bed with a laptop, headset around neck, feet up",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, wearing only an oversized lavender hoodie, bare legs, lying on a bed with a laptop open to a match recap, headset around neck, feet up, attic room with pink and lavender LED, tired amused expression, implied nude, tasteful framing, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Post-game debrief. The debrief is just me staring at the ceiling.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-07",
+        "order": 7,
+        "intensity": 6,
+        "time": null,
+        "theme": "rank_up_celebration",
+        "set": "bedroom_setup",
+        "outfit": "topless, headset on, hands covering chest",
+        "pose": "kneeling on the bed, laughing, confetti on the sheets",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, artistic topless, headset on, hands covering chest, kneeling on a bed with confetti on the white sheets, laughing, pink and lavender LED glow, tasteful framing, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Celebration is private. This is the private part.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-08",
+        "order": 8,
+        "intensity": 7,
+        "time": null,
+        "theme": "late_night",
+        "set": "bedroom_setup",
+        "outfit": "pink satin pyjama shirt open, topless, shorts",
+        "pose": "sitting against the headboard, one knee up, direct gaze",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, pink satin pyjama shirt open, topless artistic nude, satin shorts, sitting against the headboard, one knee up, direct gaze, soft warm lamp light, tasteful framing, medium shot, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Late night. Still thinking about that last fight.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-09",
+        "order": 9,
+        "intensity": 8,
+        "time": null,
+        "theme": "late_night",
+        "set": "bedroom_setup",
+        "outfit": "nude, white sheet partly covering her",
+        "pose": "lying on her side, sheet draped over the hips, looking at the camera",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, full artistic nude lying on her side, white sheet draped over the hips, looking at the camera, pink satin pyjamas on the floor, warm lamp light, soft shadows, tasteful composition, fine art nude photography style, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Under the sheets. Exactly where the rank is hardstuck.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      },
+      {
+        "id": "PPV-10",
+        "order": 10,
+        "intensity": 9,
+        "time": null,
+        "theme": "late_night",
+        "set": "bedroom_setup",
+        "outfit": "nude, white gaming headset only",
+        "pose": "standing by the attic window at night, city lights behind, seen three-quarter from behind",
+        "prompt": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build, small fine-line rose tattoo on inner left forearm, adult woman, clearly 26 years old, mature features, full artistic nude standing by the attic window at night, white gaming headset with small rose sticker around her neck, seen three-quarter from behind, city lights through the glass, rooftops of Paris outside, soft blue and pink light, tasteful composition, fine art nude photography style, photorealistic photo, natural skin texture, soft cinematic lighting, shallow depth of field, 85mm lens, high detail",
+        "negative_prompt": "child, teen, young-looking, school uniform, real person likeness, brand logo, team logo, text, watermark, extra fingers, deformed hands, extra limbs, bad anatomy, blurry, lowres, cartoon, anime, champion costume, game skin, Riot Games, Nintendo",
+        "aspect_ratio": "4:5",
+        "caption": "Last one of the week. Same time next Friday.",
+        "locked": true,
+        "checks": {
+          "min_perceived_age": 25,
+          "no_logos": true,
+          "no_champion_names": true
+        }
+      }
+    ]
+  }
+}

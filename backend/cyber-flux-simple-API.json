@@ -1,0 +1,136 @@
+{
+  "6": {
+    "inputs": {
+      "text": "rsmly, [Margot Robbie:Emma Watson:0.5], 26 year old french woman, long platinum blonde hair with lavender tips, green-grey eyes, light freckles on nose and cheeks, athletic toned build with defined shoulders and toned stomach, small fine-line rose tattoo on inner left forearm, clearly an adult woman, completely nude, artistic nude photography, attic bedroom with exposed wooden beams, warm gold glow from the monitors with no readable text, pink and lavender LED strip lights, white sheets, soft intimate lighting, tasteful and elegant, 85mm lens f/1.8, light film grain, natural skin texture, photorealistic, vertical 4:5, on her back holding her knee, pussy wide open , cumm leaking from pussy, o face, pleasure, warm monitor glow on her skin, full shot",
+      "clip": [
+        "30",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.60"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "31",
+        0
+      ],
+      "vae": [
+        "30",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.60"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Enregistrer Image",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.60"
+    }
+  },
+  "27": {
+    "inputs": {
+      "width": 720,
+      "height": 720,
+      "batch_size": 2
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.60"
+    }
+  },
+  "30": {
+    "inputs": {
+      "ckpt_name": "cyberrealisticFlux_v21AIOFP8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Charger Point de Contrôle",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.60"
+    }
+  },
+  "31": {
+    "inputs": {
+      "seed": 456264224209447,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "30",
+        0
+      ],
+      "positive": [
+        "35",
+        0
+      ],
+      "negative": [
+        "33",
+        0
+      ],
+      "latent_image": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.60"
+    }
+  },
+  "33": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "30",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.60"
+    }
+  },
+  "35": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "GuidageFlux",
+      "cnr_id": "comfy-core",
+      "ver": "0.3.60"
+    }
+  }
+}
